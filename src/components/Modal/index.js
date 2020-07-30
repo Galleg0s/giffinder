@@ -1,5 +1,7 @@
-import React from 'react';
+
+import React from "react";
 import styles from './styles.module.scss';
+ 
 
 const Modal = ({closeModal, children}) => {
     const handleCloseClick = () => {
@@ -7,11 +9,11 @@ const Modal = ({closeModal, children}) => {
     }
 
     return (
-        <div className={styles.overlay}>
+        <div className={styles.container}>
             <div className={styles.content}>
                 { children }
+                <button className={styles.close} type="button" onClick={handleCloseClick}>x</button>
             </div>
-            <button className={styles.closeButton} type="button" onClick={handleCloseClick}>+</button>
         </div>
     )
 }

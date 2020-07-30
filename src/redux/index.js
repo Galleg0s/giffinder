@@ -1,4 +1,4 @@
-import {GIFS_FETCH_REQUEST, GIFS_FETCH_SUCCESS, GIFS_FETCH_FAILURE, SET_RESULTS, SET_ERROR} from './constants'
+import {SET_QUERY, GIFS_FETCH_REQUEST, GIFS_FETCH_SUCCESS, GIFS_FETCH_FAILURE, SET_RESULTS, SET_ERROR, SET_ACTIVE_ITEM_ID, SET_OFFSET} from './constants'
 
 const initialState = {
     query: '',
@@ -7,10 +7,17 @@ const initialState = {
     results: [],
     displayedItemsCount: 10,
     currentPage: 1,
+    activeItemId: null,
+    offset: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SET_QUERY:
+            return {
+                ...state,
+                query: action.payload,
+            }
         case SET_RESULTS:
             return {
                 ...state,
@@ -21,10 +28,19 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload,
             }
+        case SET_ACTIVE_ITEM_ID: 
+            return {
+                ...state,
+                activeItemId: action.payload,
+            }   
+        case SET_OFFSET: 
+            return {
+                ...state,
+                offset: action.payload,
+            }     
         case GIFS_FETCH_REQUEST:
             return {
                 ...state,
-                query: action.payload,
                 isLoading: true,
             }
         case GIFS_FETCH_SUCCESS:

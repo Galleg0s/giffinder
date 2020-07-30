@@ -1,67 +1,36 @@
-import React, {useState} from 'react';
-import Modal from '../Modal';
+import React from 'react';
 import styles from './styles.module.scss';
 
-class SearchResults extends React.Component {
-    state = {
-        isOpen: {}
+const SearchResults = ({results, onItemClick}) => {
+    const handleItemClick = (id) => {
+        onItemClick(id);
     }
 
-    openModal = (id) => {
-        this.setState({
-            isOpen: {
-                [id]: true,
+    return (
+        <div className={styles.container}>
+            {
+                results.map(item => {
+                    return (
+                        <div key={item.id}>
+                            <button
+                                type="button"
+                                onClick={() => handleItemClick(item.id)} 
+                                className={styles.imageContainer}
+                            >
+                                <img 
+                                    src={item.images.fixed_height.url} 
+                                    alt={item.title}
+                                    title={item.title}
+                                    width={item.images.fixed_height.width}
+                                    height={item.images.fixed_height.height}
+                                />
+                            </button>
+                        </div>
+                    )
+                })
             }
-        })
-    };
-
-    closeModal = (id) => {
-        this.setState({
-            isOpen: {
-                [id]: false,
-            }
-        })
-    };
-
-    render () {
-        return (
-            <>
-                {
-                    this.props.results.map(item => {
-                        return (
-                            <div key={item.id}>
-                                <div>
-                                    <a href="#" onClick={this.openModal.bind(this, item.id)} className={styles.imageContainer}>
-                                        <img 
-                                            src={item.images.fixed_height.url} 
-                                            alt={item.title}
-                                            title={item.title}xxxx
-                                            width={item.images.fixed_height.width}
-                                            height={item.images.fixed_height.height}
-                                        />
-                                    </a>
-                                </div>
-
-                                {
-                                    this.state.isOpen[item.id] && (
-                                        <Modal closeModal={this.closeModal.bind(this, item.id)} isOpen={this.state.isOpen[item.id]}>
-                                            <img 
-                                                src={item.images.original.url} 
-                                                alt={item.title}
-                                                title={item.title}
-                                                width={item.images.original.width}
-                                                height={item.images.original.height}
-                                            />
-                                        </Modal>
-                                    )
-                                }
-                            </div>
-                        )
-                    })
-                }
-            </>
-        )
-    }
+        </div>
+    )
 }
 
 export default SearchResults;

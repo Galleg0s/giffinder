@@ -1,5 +1,5 @@
-import React, {useState}from 'react'
-import styles from './styles.scss'
+import React, {useState} from 'react'
+import styles from './styles.module.scss'
 
 const Search = ({onSubmitClick, clearResults}) => {
     const [query, setQuery] = useState('');
@@ -17,20 +17,27 @@ const Search = ({onSubmitClick, clearResults}) => {
         if (query === '') {
             return;
         }
-
+        debugger;
         onSubmitClick(query);
     }
 
     return (
         <form className={styles.container}>
-            <input onChange={handleInputChange} className={styles.input} type="text" name="search" placeholder="Enter a subject to search for images" />
-            <button onClick={handleSubmitClick} className={styles.button} type="submit">Search</button>
+            <input 
+                className={styles.input} 
+                onChange={handleInputChange}
+                type="text" 
+                name="search" 
+                placeholder="Enter a subject to search for images" 
+            />
+            <button 
+                className={styles.button} 
+                onClick={handleSubmitClick} 
+                type="submit">
+                Search
+            </button>
         </form>
     )
-}
-
-Search.propTypes = {
-
 }
 
 export default Search
