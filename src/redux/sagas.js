@@ -1,5 +1,5 @@
 
-import { call, put, takeLatest, takeEvery, select } from 'redux-saga/effects';
+import { put, takeLatest, select } from 'redux-saga/effects';
 import {GIFS_FETCH_REQUEST, GIFS_FETCH_SUCCESS, GIFS_FETCH_FAILURE} from './constants';
 import {getQuery, getDisplayedItemsCount, getOffset} from './selectors';
 
