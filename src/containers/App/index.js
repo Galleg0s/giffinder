@@ -7,10 +7,12 @@ import { Search, SearchResults, Loader, NotFound, Lightbox, Navigation} from '..
 
 export class App extends Component {
   handleSubmitClick = (query) => {
+    this.props.setQuery(query);
+
     if (this.props.results.length > 0) {
       this.props.setResults([]);
     }
-    this.props.setQuery(query);
+
     this.props.fetchGifs();
   }
 
@@ -31,6 +33,11 @@ export class App extends Component {
   }
 
   handleNavButtonClick = (direction) => {
+    this.props.setResults([]);
+    if (this.props.error) {
+      this.props.setError('');
+    }
+
     if (direction === 'next') {
       this.props.setOffset(this.props.offset + this.props.displayedItemsCount);
       this.props.fetchGifs();
@@ -41,7 +48,7 @@ export class App extends Component {
   }
 
   render() {
-    const {isLoading, results, activeItemId, error} = this.props;
+    const {isLoading, results, activeItemId, error, offset} = this.props;
     const activeItem = results.find(item => item.id === activeItemId);
 
     return (
@@ -52,7 +59,7 @@ export class App extends Component {
         { results.length > 0 && <SearchResults results={results} onItemClick={this.handleItemClick}/> }
         { activeItemId && <Lightbox item={activeItem} onCloseBtnClick={this.handleCloseBtnClick}/>}
         { error && <NotFound error={error}/> }
-        { results.length > 0 && <Navigation onButtonClick={this.handleNavButtonClick} />}
+        { results.length > 0 && <Navigation offset={offset} onButtonClick={this.handleNavButtonClick} />}
       </div>
     )
   }

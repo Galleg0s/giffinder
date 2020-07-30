@@ -17,7 +17,7 @@ const Search = ({onSubmitClick, clearResults}) => {
         if (query === '') {
             return;
         }
-        debugger;
+ 
         onSubmitClick(query);
     }
 
