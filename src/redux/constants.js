@@ -1,0 +1,10 @@
+export const SET_QUERY = 'SET_QUERY';
+export const SET_RESULTS = 'SET_RESULTS';
+export const SET_ERROR = 'SET_ERROR';
+export const SET_ACTIVE_ITEM_ID = 'SET_ACTIVE_ITEM_ID';
+export const SET_OFFSET = 'SET_OFFSET';
+
+export const GIFS_FETCH_REQUEST = 'GIFS_FETCH_REQUEST';
+export const GIFS_FETCH_PENDING = 'GIFS_FETCH_PENDING';
+export const GIFS_FETCH_SUCCESS = 'GIFS_FETCH_SUCCESS';
+export const GIFS_FETCH_FAILURE = 'GIFS_FETCH_FAILURE';
