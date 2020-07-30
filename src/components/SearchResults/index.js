@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-const SearchResults = ({results, onItemClick}) => {
+const SearchResults = ({ results, onItemClick }) => {
     const handleItemClick = (id) => {
         onItemClick(id);
     }
@@ -14,11 +14,11 @@ const SearchResults = ({results, onItemClick}) => {
                         <div key={item.id}>
                             <button
                                 type="button"
-                                onClick={() => handleItemClick(item.id)} 
+                                onClick={() => handleItemClick(item.id)}
                                 className={styles.imageContainer}
                             >
-                                <img 
-                                    src={item.images.fixed_height.url} 
+                                <img
+                                    src={item.images.fixed_height.url}
                                     alt={item.title}
                                     title={item.title}
                                     width={item.images.fixed_height.width}

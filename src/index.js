@@ -12,7 +12,7 @@ import App from './containers/App';
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  rootReducer, 
+  rootReducer,
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 

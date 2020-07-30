@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
+import { Button } from '../../ui';
 
-const Search = ({onSubmitClick, clearResults}) => {
+const Search = ({ onSubmitClick, clearResults }) => {
     const [query, setQuery] = useState('');
 
     const handleInputChange = e => {
@@ -17,25 +18,25 @@ const Search = ({onSubmitClick, clearResults}) => {
         if (query === '') {
             return;
         }
- 
+
         onSubmitClick(query);
     }
 
     return (
         <form className={styles.container}>
-            <input 
-                className={styles.input} 
+            <input
+                className={styles.input}
                 onChange={handleInputChange}
-                type="text" 
-                name="search" 
-                placeholder="Enter a subject to search for images" 
+                type="text"
+                name="search"
+                placeholder="Enter a subject to search for images"
             />
-            <button 
-                className={styles.button} 
-                onClick={handleSubmitClick} 
-                type="submit">
+            <Button
+                onClick={handleSubmitClick}
+                type="submit"
+            >
                 Search
-            </button>
+            </Button>
         </form>
     )
 }

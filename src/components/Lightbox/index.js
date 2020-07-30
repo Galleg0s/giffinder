@@ -1,17 +1,17 @@
 import React from 'react'
-import Modal from '../Modal';
+import { Modal } from '../../ui';
 import styles from './styles.module.scss'
 
-const Lightbox = ({item, onCloseBtnClick}) => {
+const Lightbox = ({ item, onCloseBtnClick }) => {
     const closeModal = () => {
         onCloseBtnClick();
     }
 
-    return  (
+    return (
         <Modal closeModal={closeModal}>
-            <img 
+            <img
                 className={styles.image}
-                src={item.images.original.url} 
+                src={item.images.original.url}
                 alt={item.title}
                 title={item.title}
             />

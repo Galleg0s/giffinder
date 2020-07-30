@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import {fetchGifs, setResults, setError, setActiveItemId, setOffset, setQuery} from '../../redux/actions';
-import {getResults, getError, getIsLoading, getActiveItemId, getOffset, getDisplayedItemsCount} from '../../redux/selectors';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchGifs, setResults, setError, setActiveItemId, setOffset, setQuery } from '../../redux/actions';
+import { getResults, getError, getIsLoading, getActiveItemId, getOffset, getDisplayedItemsCount } from '../../redux/selectors';
 import styles from './styles.module.scss';
-import { Search, SearchResults, Loader, NotFound, Lightbox, Navigation} from '../../components';
+import { Search, SearchResults, NotFound, Lightbox, Navigation } from '../../components';
+import { Loader } from '../../ui';
 
 export class App extends Component {
   handleSubmitClick = (query) => {
@@ -18,7 +19,7 @@ export class App extends Component {
 
   handleClearResults = () => {
     this.props.setResults([]);
-    
+
     if (this.props.error) {
       this.props.setError('');
     }
@@ -48,18 +49,18 @@ export class App extends Component {
   }
 
   render() {
-    const {isLoading, results, activeItemId, error, offset} = this.props;
+    const { isLoading, results, activeItemId, error, offset } = this.props;
     const activeItem = results.find(item => item.id === activeItemId);
 
     return (
       <div className={styles.container}>
         <h1 className={styles.header}>Welcome to GifFinder!</h1>
-        <Search onSubmitClick={this.handleSubmitClick} clearResults={this.handleClearResults}/>
-        { isLoading && !error && <Loader /> }
-        { results.length > 0 && <SearchResults results={results} onItemClick={this.handleItemClick}/> }
-        { activeItemId && <Lightbox item={activeItem} onCloseBtnClick={this.handleCloseBtnClick}/>}
-        { error && <NotFound error={error}/> }
-        { results.length > 0 && <Navigation offset={offset} onButtonClick={this.handleNavButtonClick} />}
+        <Search onSubmitClick={this.handleSubmitClick} clearResults={this.handleClearResults} />
+        {isLoading && !error && <Loader />}
+        {results.length > 0 && <SearchResults results={results} onItemClick={this.handleItemClick} />}
+        {activeItemId && <Lightbox item={activeItem} onCloseBtnClick={this.handleCloseBtnClick} />}
+        {error && <NotFound error={error} />}
+        {results.length > 0 && <Navigation offset={offset} onButtonClick={this.handleNavButtonClick} />}
       </div>
     )
   }

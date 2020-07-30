@@ -10,7 +10,7 @@ const NotFound = () => {
                 We're sorry, but we couldn't find images for this request. <br />
                 Change the entered subject and try again.
             </div>
-            <img src={Sorry} alt="Sorry, really" width="200" height="200"/>
+            <img src={Sorry} alt="Sorry, really" width="200" height="200" />
         </div>
     )
 }

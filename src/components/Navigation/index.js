@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './styles.module.scss'
+import { Button } from '../../ui';
 
-const Navigation = ({onButtonClick, offset}) => {
+const Navigation = ({ onButtonClick, offset }) => {
     const handleButtonClick = (e) => {
         let direction = e.target.value;
         onButtonClick(direction);
@@ -10,18 +11,21 @@ const Navigation = ({onButtonClick, offset}) => {
 
     return (
         <div className={styles.container}>
-          <button 
-            disabled={isFirstPage}
-            className={styles.button} 
-            type="button" 
-            value="prev"
-            onClick={handleButtonClick}
-          >
-              Prev
-          </button>
-          <button className={styles.button} type="button" value="next" onClick={handleButtonClick}>
-              Next
-          </button>
+            <Button
+                disabled={isFirstPage}
+                type="button"
+                value="prev"
+                onClick={handleButtonClick}
+            >
+                Prev
+          </Button>
+            <Button
+                type="button"
+                value="next"
+                onClick={handleButtonClick}
+            >
+                Next
+          </Button>
         </div>
     )
 }
