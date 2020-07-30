@@ -1,15 +1,17 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-const Modal = ({isOpen, toggleModal, children}) => {
+const Modal = ({closeModal, children}) => {
     const handleCloseClick = () => {
-        toggleModal();
+        closeModal();
     }
 
-    return isOpen && (
-        <div>
-            { children }
-            <button type="button" onClick={handleCloseClick}>+</button>
+    return (
+        <div className={styles.overlay}>
+            <div className={styles.content}>
+                { children }
+            </div>
+            <button className={styles.closeButton} type="button" onClick={handleCloseClick}>+</button>
         </div>
     )
 }

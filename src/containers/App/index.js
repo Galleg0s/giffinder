@@ -25,7 +25,7 @@ export class App extends Component {
         <h1 className={styles.header}>Welcome to GifFinder!</h1>
         <Search onSubmitClick={this.handleSubmit} clearResults={this.handleClearResults}/>
         { this.props.isLoading && !this.props.error && <Loader /> }
-        { this.props.results.length > 0 && <SearchResults data={this.props.results} /> }
+        { this.props.results.length > 0 && <SearchResults results={this.props.results} /> }
         { this.props.error && <NotFound error={this.props.error}/> }
       </div>
     )
